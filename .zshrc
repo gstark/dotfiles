@@ -66,6 +66,18 @@ scp() {
 }
 
 #-------------------------------------------
+# Tracks yadm status (dotfiles)
+#-------------------------------------------
+yadm_status() {
+  if [ -n "$(yadm status --porcelain)" ]; then
+    #echo "${fg[red]}(yadm)${reset_color} "
+    echo "(yadm) "
+  else
+    echo ""
+  fi
+}
+
+#-------------------------------------------
 # Define the shell prompt
 #-------------------------------------------
 # unstaged (*) and staged (+) changes will be shown next to the branch name
@@ -74,7 +86,7 @@ export GIT_PS1_SHOWDIRTYSTATE="true"
 export GIT_PS1_SHOWUNTRACKEDFILES="true"
 # see the difference between HEAD and its upstream
 export GIT_PS1_SHOWUPSTREAM="true"
-export PROMPT="%~ \$(vcs_status)»%b "
+export PROMPT="%~ \$(vcs_status)\$(yadm_status)»%b "
 
 #-------------------------------------------
 # Disable brew auto update
