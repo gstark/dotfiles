@@ -18,4 +18,5 @@ brew "neovim"
 
 cask "chromedriver"
 cask "font-jetbrains-mono"
+cask "font-fira-code"
 cask "devdocs"
