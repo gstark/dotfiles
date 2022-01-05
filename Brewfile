@@ -14,6 +14,7 @@ brew "hub"
 brew "figlet"
 brew "trash"
 brew "vim"
+brew "neovim"
 
 cask "chromedriver"
 cask "font-jetbrains-mono"
