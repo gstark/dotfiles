@@ -182,7 +182,7 @@
     },
     "omnisharp.useGlobalMono": "never",
     "git.inputValidationSubjectLength": 70,
-    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.neovimPath": "/opt/homebrew/bin/nvim",
     "vim.enableNeovim": true,
     "editor.cursorBlinking": "solid",
     "highlightLine.borderWidth": "1px",
@@ -259,7 +259,7 @@
     },
     "git.confirmSync": false,
     "git.path": "/usr/local/bin/git",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 4,
     "editor.guides.indentation": false,
     "editor.guides.bracketPairs": false
   }
