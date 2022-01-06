@@ -88,7 +88,8 @@ export GIT_PS1_SHOWDIRTYSTATE="true"
 export GIT_PS1_SHOWUNTRACKEDFILES="true"
 # see the difference between HEAD and its upstream
 export GIT_PS1_SHOWUPSTREAM="true"
-export PROMPT="%~ \$(vcs_status)\$(yadm_status)»%b "
+export PROMPT="%~ \$(vcs_status)»%b "
+export RPROMPT="\$(yadm_status)"
 
 #-------------------------------------------
 # Disable brew auto update
