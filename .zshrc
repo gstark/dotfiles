@@ -10,6 +10,9 @@ DISABLE_AUTO_UPDATE=true
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/gavin/.oh-my-zsh
 
+ZSH_THEME=minimal
+source $ZSH/oh-my-zsh.sh
+
 #-------------------------------------------
 # Antigen plugin installer
 #-------------------------------------------
@@ -22,11 +25,10 @@ antigen bundle colorize
 antigen bundle z
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle popstas/zsh-command-time
+antigen bundle joshskidmore/zsh-fzf-history-search
+antigen bundle Aloxaf/fzf-tab
 antigen theme minimal
 antigen apply
-
-ZSH_THEME=minimal
-source $ZSH/oh-my-zsh.sh
 
 
 #-------------------------------------------
@@ -147,8 +149,5 @@ eval "$(rbenv init -)"
 export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/node@14/lib"
 export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/node@14/include"
-
-
-
 
 

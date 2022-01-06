@@ -259,7 +259,7 @@
     },
     "git.confirmSync": false,
     "git.path": "/usr/local/bin/git",
-    "window.zoomLevel": 4,
+    "window.zoomLevel": 2,
     "editor.guides.indentation": false,
     "editor.guides.bracketPairs": false
   }
