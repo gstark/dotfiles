@@ -149,7 +149,7 @@ set wildignore+=.git
 " My color scheme
 syntax enable
 colorscheme lucius
-LuciusDarkHighContrast
+LuciusBlackHighContrast
 
 
 
