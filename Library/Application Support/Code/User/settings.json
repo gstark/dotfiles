@@ -238,7 +238,7 @@
     "editor.tabSize": 2,
     "editor.accessibilitySupport": "off",
     "workbench.panel.defaultLocation": "right",
-    "workbench.colorTheme": "One Monokai",
+    "workbench.colorTheme": "Visual Studio Dark",
     "editor.fontLigatures": false,
     "github.copilot.autocomplete.enable": true,
     "javascript.inlayHints.enumMemberValues.enabled": true,
