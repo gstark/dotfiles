@@ -23,6 +23,7 @@ brew "yarn"
 
 cask "chromedriver"
 cask "devdocs"
+cask "docker"
 cask "font-fira-code"
 cask "font-jetbrains-mono"
 cask "iterm2"
