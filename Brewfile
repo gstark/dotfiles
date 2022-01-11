@@ -22,7 +22,10 @@ brew "vim"
 brew "yarn"
 
 cask "chromedriver"
-cask "font-jetbrains-mono"
-cask "font-fira-code"
 cask "devdocs"
-
+cask "font-fira-code"
+cask "font-jetbrains-mono"
+cask "iterm2"
+cask "itsycal"
+cask "rectangle"
+cask "tuple"
