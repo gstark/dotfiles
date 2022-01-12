@@ -23,13 +23,15 @@ antigen bundle rake
 antigen bundle ruby
 antigen bundle colorize
 antigen bundle z
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle git-completion
 antigen bundle popstas/zsh-command-time
 antigen bundle joshskidmore/zsh-fzf-history-search
 antigen bundle Aloxaf/fzf-tab
 antigen theme minimal
 antigen apply
-
 
 #-------------------------------------------
 # You may need to manually set your language environment
