@@ -48,7 +48,6 @@ export VISUAL='vim'
 # Some useful aliases
 #-------------------------------------------
 alias vi=vim
-alias git=hub
 alias rm="if [ -x /usr/local/bin/figlet ]; then figlet -f banner3 'use trash'; else; echo 'use trash'; fi #"
 alias find_broken_symlinks='find . -type l | (while read FN ; do test -e "${FN}" || ls -ld "${FN}" ; done)'
 alias gem_remove_all='gem list | grep -E -v "bundler|openssl|bigdecimal|json|rake|minitest|io-console|rdoc|psych|test-unit" | xargs gem uninstall --all --force'
@@ -152,5 +151,4 @@ eval "$(rbenv init -)"
 export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/node@14/lib"
 export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/node@14/include"
-
 
