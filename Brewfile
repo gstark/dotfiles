@@ -10,6 +10,7 @@ brew "httpie"
 brew "hub"
 brew "libffi"
 brew "libyaml"
+brew "mas"
 brew "ncdu"
 brew "neovim"
 brew "node@14"
@@ -32,3 +33,5 @@ cask "iterm2"
 cask "itsycal"
 cask "rectangle"
 cask "tuple"
+
+# mas "Next Meeting", id: 1017470484
