@@ -18,6 +18,7 @@ source $ZSH/oh-my-zsh.sh
 #-------------------------------------------
 source ~/bin/antigen.zsh
 antigen use oh-my-zsh
+antigen bundle aws
 antigen bundle git
 antigen bundle rake
 antigen bundle ruby
@@ -90,7 +91,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES="true"
 # see the difference between HEAD and its upstream
 export GIT_PS1_SHOWUPSTREAM="true"
 export PROMPT="%~ \$(vcs_status)»%b "
-export RPROMPT="\$(yadm_status)"
+export RPROMPT="$RPROMPT \$(yadm_status)"
 
 #-------------------------------------------
 # Disable brew auto update
@@ -151,4 +152,9 @@ eval "$(rbenv init -)"
 export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/node@14/lib"
 export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/node@14/include"
+
+#-------------------------------------------
+# Set default AWS profile
+#-------------------------------------------
+export AWS_PROFILE=dev
 
