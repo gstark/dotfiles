@@ -124,7 +124,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 #-------------------------------------------
 # PATH configuration
 #-------------------------------------------
-#export PATH="/usr/local/bin:$HOME/bin:/usr/local/sbin:${PATH}"
+export PATH="$HOME/bin:${PATH}"
 
 #-------------------------------------------
 # Fix slow pasting into zsh when syntax highligting is on
