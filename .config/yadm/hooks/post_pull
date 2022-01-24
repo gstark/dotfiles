@@ -1,0 +1,30 @@
+cd ~
+
+# Install all my brew dependencies
+brew bundle
+
+# Install all my vim plugins (sssshhhh, quiet)
+vim +PlugInstall +qall &>/dev/null
+
+CODE_EXTENSIONS=$(code --list-extensions)
+for extension in \
+  formulahendry.auto-rename-tag \
+  dbaeumer.vscode-eslint \
+  william-voyek.vscode-nginx \
+  esbenp.prettier-vscode \
+  rebornix.ruby \
+  timonwong.shellcheck \
+  meganrogge.template-string-converter \
+  wingrunr21.vscode-ruby \
+  vscodevim \
+  vscodevim.vim \
+  timonwong.shellcheck \
+  dendron.dendron \
+; do
+  if [[ "$CODE_EXTENSIONS" != *"${extension}"* ]]; then
+    code --install-extension "$extension"
+  fi
+done
+
+# Allow VS Code to auto-repeat the key
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
