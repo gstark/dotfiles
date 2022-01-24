@@ -122,11 +122,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 #-------------------------------------------
-# PATH configuration
-#-------------------------------------------
-export PATH="$HOME/bin:${PATH}"
-
-#-------------------------------------------
 # Fix slow pasting into zsh when syntax highligting is on
 #-------------------------------------------
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
@@ -157,4 +152,15 @@ export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/node@14/include"
 # Set default AWS profile
 #-------------------------------------------
 export AWS_PROFILE=dev
+
+
+#-------------------------------------------
+# PATH configuration
+#
+#   NOTE, local `./bin` is in path, not the best idea, but it helps on rails binstub projects
+#
+#   NOTE: Also make sure this is *last* or *late* in the setup so it prepends correctly
+#
+#-------------------------------------------
+export PATH="$HOME/bin:./bin:${PATH}"
 
