@@ -57,6 +57,10 @@ alias gem_remove_all='gem list | grep -E -v "default:|test-unit|power_assert|rak
 alias tmux="TERM=screen-256color-bce tmux"
 alias ack="rg"   # rg is faster and better
 alias ag="rg"    # rg is faster and better
+alias dendron="code $HOME/Dendron"
+gnup() {
+  gnuplot -p -e "set terminal dumb size $(tput cols), $(tput lines); unset xtics; set autoscale; plot '-'"
+}
 ruboblame() {
   rubocop --format clang | grep -v '^\s' | grep -v '^$' | grep -v "files inspected" | awk -F: '{ cmd = "git blame --porcelain -L "$2","$2 " " $1 " 2>/dev/null | grep \"^author \" | cut -c8-"; cmd | getline blame; print blame ": " $1 " Line:" $2 " " $5 " " $6; close(cmd) }'
 }
@@ -137,30 +141,16 @@ setopt ignore_eof
 ZSH_COMMAND_TIME_EXCLUDE=(vim irb)
 
 #-------------------------------------------
-# RBENV
+# Disable all history duplication
 #-------------------------------------------
-eval "$(rbenv init -)"
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 #-------------------------------------------
-# Because node is old NODE
+# Kin
 #-------------------------------------------
-export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
-export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/node@14/lib"
-export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/node@14/include"
-
-#-------------------------------------------
-# Set default AWS profile
-#-------------------------------------------
-export AWS_PROFILE=dev
-
-
-#-------------------------------------------
-# PATH configuration
-#
-#   NOTE, local `./bin` is in path, not the best idea, but it helps on rails binstub projects
-#
-#   NOTE: Also make sure this is *last* or *late* in the setup so it prepends correctly
-#
-#-------------------------------------------
-export PATH="$HOME/bin:./bin:${PATH}"
-
+. "${HOME}/.zshrc-kin"

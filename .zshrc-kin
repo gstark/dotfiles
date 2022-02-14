@@ -1,0 +1,33 @@
+#-------------------------------------------
+# Some useful aliases
+#-------------------------------------------
+alias openrift='open https://rift-pr-$(gh pr view --json number --jq '.number')-app.dev.kin.co/'
+
+#-------------------------------------------
+# RBENV
+#-------------------------------------------
+eval "$(rbenv init -)"
+
+#-------------------------------------------
+# Because node is old NODE
+#-------------------------------------------
+export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
+export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/node@14/lib"
+export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/node@14/include"
+
+
+#-------------------------------------------
+# Set default AWS profile
+#-------------------------------------------
+export AWS_PROFILE=dev
+
+#-------------------------------------------
+# PATH configuration
+#
+#   NOTE, local `./bin` is in path, not the best idea, but it helps on rails binstub projects
+#
+#   NOTE: Also make sure this is *last* or *late* in the setup so it prepends correctly
+#
+#-------------------------------------------
+export PATH="$HOME/bin:./bin:${PATH}"
+
