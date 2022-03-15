@@ -28,6 +28,7 @@ brew "ruby-build"
 brew "trash"
 brew "vim"
 brew "yarn"
+brew "remotemobprogramming/brew/mob"
 
 cask "chromedriver"
 cask "devdocs"
