@@ -1,9 +1,7 @@
 {
   "editor.insertSpaces": true,
   "[ruby]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "misogi.ruby-rubocop",
-    "editor.formatOnSave": true
+    "editor.tabSize": 2
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -128,8 +126,6 @@
   "liveshare.joinDebugSessionOption": "Prompt",
   "liveshare.showVerboseNotifications": false,
   "omnisharp.enableEditorConfigSupport": true,
-  "ruby.intellisense": "rubyLocate",
-  "ruby.useLanguageServer": true,
   "scm.diffDecorations": "overview",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.disableExtension": false,
@@ -258,9 +254,9 @@
   "editor.guides.indentation": false,
   "editor.guides.bracketPairs": false,
   "editor.tokenColorCustomizations": {
-    "comments": "#8fb0e577"
+    "comments": "#8fb0e5aa"
   },
-  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.colorTheme": "GitHub Dark Default",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "blockman.n01LineHeight": 0,
   "svg.preview.mode": "svg",
@@ -268,5 +264,20 @@
   "gitlens.codeLens.authors.enabled": false,
   "solargraph.useBundler": true,
   "solargraph.bundlerPath": "/Users/gavin/.rbenv/shims/bundler",
-  "window.zoomLevel": 4
+  "ruby.lint": {
+    "standard": {
+      "useBundler": true
+    }
+  },
+  "window.zoomLevel": 3,
+  "ruby.useLanguageServer": true,
+  "ruby.intellisense": "rubyLocate"
+  // "emeraldwalk.runonsave": {
+  //   "commands": [
+  //       {
+  //           "match": "\\.rb$",
+  //           "cmd": "standardrb --fix ${file}"
+  //       }
+  //   ]
+  // }
 }
