@@ -41,4 +41,4 @@ cask "itsycal"
 cask "rectangle"
 cask "tuple"
 
-# mas "Next Meeting", id: 1017470484
+mas "Next Meeting", id: 1017470484
