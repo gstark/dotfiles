@@ -269,9 +269,9 @@
       "useBundler": true
     }
   },
-  "window.zoomLevel": 3,
   "ruby.useLanguageServer": true,
-  "ruby.intellisense": "rubyLocate"
+  "ruby.intellisense": "rubyLocate",
+  "window.zoomLevel": 4
   // "emeraldwalk.runonsave": {
   //   "commands": [
   //       {
