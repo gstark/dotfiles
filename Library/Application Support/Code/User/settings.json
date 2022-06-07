@@ -113,7 +113,6 @@
   "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestionsDelay": 500,
-  "editor.renderIndentGuides": false,
   "editor.renderWhitespace": "trailing",
   "explorer.openEditors.visible": 0,
   "git.decorations.enabled": false,
@@ -271,7 +270,10 @@
   },
   "ruby.useLanguageServer": true,
   "ruby.intellisense": "rubyLocate",
-  "window.zoomLevel": 4
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
+  "window.zoomLevel": 3
   // "emeraldwalk.runonsave": {
   //   "commands": [
   //       {
