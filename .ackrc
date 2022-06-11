@@ -1,0 +1,4 @@
+--type-add=ruby=.haml,.rake,.rsel,.spec,.j
+--type-add=ruby=.feature
+--type-set=restructuredtext=.rst
+
