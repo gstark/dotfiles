@@ -1,0 +1,6 @@
+---
+BUNDLE_GLOBAL: "jobs 4"
+BUNDLE_GEM__TEST: "false"
+BUNDLE_GEM__MIT: "false"
+BUNDLE_GEM__COC: "false"
+BUNDLE_CACHE_ALL: "true"
