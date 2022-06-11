@@ -1,0 +1,13 @@
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "debug": false,
+  "experimental": true,
+  "features": {
+    "buildkit": true
+  }
+}
