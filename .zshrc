@@ -13,6 +13,11 @@ export ZSH=$(realpath ~/.oh-my-zsh)
 source $ZSH/oh-my-zsh.sh
 
 #-------------------------------------------
+# Homebrew environment
+#-------------------------------------------
+BREW_PREFIX=$(brew --prefix)
+
+#-------------------------------------------
 # Antigen plugin installer
 #-------------------------------------------
 source ~/bin/antigen.zsh
@@ -50,7 +55,7 @@ export VISUAL='vim'
 alias vi=vim
 alias git=hub
 alias issues="gh issue list -a gstark --web"
-alias rm="if [ -x /usr/local/bin/figlet ]; then figlet -f banner3 'use trash'; else; echo 'use trash'; fi #"
+alias rm="if [ -x $BREW_PREFIX/bin/figlet ]; then figlet -f banner3 'use trash'; else; echo 'use trash'; fi #"
 alias kspring='ps auxww | grep "[s]pring" | awk "{print \$2}" | xargs kill -9'
 alias flushdns="dscacheutil -flushcache"
 alias find_broken_symlinks='find . -type l | (while read FN ; do test -e "${FN}" || ls -ld "${FN}" ; done)'
@@ -152,11 +157,11 @@ DISABLE_SPRING=true
 #-------------------------------------------
 # chruby
 #-------------------------------------------
-if [ -f  /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
+if [ -f $BREW_PREFIX/share/chruby/chruby.sh ]; then
+  source $BREW_PREFIX/share/chruby/chruby.sh
 fi
-if [ -f  /usr/local/opt/chruby/share/chruby/auto.sh ]; then
-  source /usr/local/opt/chruby/share/chruby/auto.sh
+if [ -f $BREW_PREFIX/share/chruby/auto.sh ]; then
+  source $BREW_PREFIX/share/chruby/auto.sh
 fi
 
 #-------------------------------------------
@@ -184,8 +189,8 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 #-------------------------------------------
 # PATH configuration
 #-------------------------------------------
-export PATH="/usr/local/bin:$HOME/bin:/usr/local/sbin:${PATH}"
-#
+export PATH="$BREW_PREFIX/bin:$HOME/bin:$BREW_PREFIX/sbin:${PATH}"
+
 #-------------------------------------------
 # Put the local `bin` path before the global path
 #-------------------------------------------
@@ -202,65 +207,32 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 #-------------------------------------------
-# Add path for homebrew's version of curl
-#-------------------------------------------
-export PATH="/usr/local/opt/curl/bin:$PATH"
-
-#-------------------------------------------
 # Fix slow pasting into zsh when syntax highligting is on
 #-------------------------------------------
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
-#
-# Onivim
-#
-alias oni2='/Applications/Onivim2.app/Contents/MacOS/Oni2'
-
-#
+#-------------------------------------------
 # dotnet
-#
+#-------------------------------------------
 export ASPNETCORE_ENVIRONMENT=Development
 
-#
-# Lecture helper
-#
-lecture() {
-  if [ -f ~/dev/sdg/handbook/lessons/${1}/lecture/presentation/index.md ]; then
-    open -a Deckset ~/dev/sdg/handbook/lessons/${1}/lecture/presentation/index.md
-  fi
-  if [ -f ~/dev/sdg/handbook/lessons/${1}/lecture.md ]; then
-    open -a Deckset ~/dev/sdg/handbook/lessons/${1}/lecture.md
-  fi
-}
-
-lecture-to-pdf() {
-  if [ -f ~/dev/sdg/handbook/lessons/${1}/lecture/presentation/index.md ]; then
-    deckset-to-pdf ~/dev/sdg/handbook/lessons/${1}/lecture/presentation/index.md
-  fi
-  if [ -f ~/dev/sdg/handbook/lessons/${1}/lecture.md ]; then
-    deckset-to-pdf ~/dev/sdg/handbook/lessons/${1}/lecture.md
-  fi
-}
-
-#
+#-------------------------------------------
+# less
+#-------------------------------------------
 # Remove options from less
-#
 unset LESS
-
-#
-# Set Firefox Developer Edition as my dev browser of choice
-#
-#export BROWSER="/usr/local/bin/firefox-dev.js"
-
 
 # Disable control-D (EOF) from existing the shell
 setopt ignore_eof
 
 # The next line updates PATH for Netlify's Git Credential Helper.
-if [ -f '/Users/gstark/.netlify/helper/path.zsh.inc' ]; then source '/Users/gstark/.netlify/helper/path.zsh.inc'; fi
+if [ -f '~/.netlify/helper/path.zsh.inc' ]; then source '~/.netlify/helper/path.zsh.inc'; fi
 
 # Configures the ZSH command timing to exclude certain commands
 ZSH_COMMAND_TIME_EXCLUDE=(vim irb)
 
-# thefuck
+#-------------------------------------------
+# the fuck
+#-------------------------------------------
 eval $(thefuck --alias)
+
