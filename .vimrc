@@ -11,7 +11,6 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'jonathanfilip/vim-lucius'
 Plugin 'gmarik/vundle'
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/mru.vim'
@@ -34,7 +33,7 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+" Plugin 'mxw/vim-jsx'
 Plugin 'alvan/vim-closetag'
 Plugin 'henrik/vim-ruby-runner'
 Plugin 'junegunn/fzf'
@@ -149,7 +148,7 @@ set wildignore+=.git
 " My color scheme
 syntax enable
 colorscheme lucius
-LuciusBlackHighContrast
+LuciusDarkHighContrast
 
 
 
@@ -252,6 +251,9 @@ endif
 
 " Somehow this makes ruby syntax highlighting faster
 set re=1
+
+" Use new regular expression engine (otherwise typescript is slow... Sigh)
+set re=0
 
 " Stop vim syntax highlighting on wide lines -- turned off to try re=1 to see
 " if that is fast enough
