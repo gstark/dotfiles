@@ -8,9 +8,8 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE=true
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/gavin/.oh-my-zsh
+export ZSH=$(realpath ~/.oh-my-zsh)
 
-ZSH_THEME=minimal
 source $ZSH/oh-my-zsh.sh
 
 #-------------------------------------------
@@ -49,7 +48,11 @@ export VISUAL='vim'
 # Some useful aliases
 #-------------------------------------------
 alias vi=vim
+alias git=hub
+alias issues="gh issue list -a gstark --web"
 alias rm="if [ -x /usr/local/bin/figlet ]; then figlet -f banner3 'use trash'; else; echo 'use trash'; fi #"
+alias kspring='ps auxww | grep "[s]pring" | awk "{print \$2}" | xargs kill -9'
+alias flushdns="dscacheutil -flushcache"
 alias find_broken_symlinks='find . -type l | (while read FN ; do test -e "${FN}" || ls -ld "${FN}" ; done)'
 alias gem_remove_all='gem list | grep -E -v "bundler|openssl|bigdecimal|json|rake|minitest|io-console|rdoc|psych|test-unit" | xargs gem uninstall --all --force'
 alias gem_remove_all='gem list | grep -E -v "bundler|openssl|bigdecimal|json|rake|minitest|io-console|rdoc|psych|power_assert|test-unit|net-telnet|did_you_mean|xmlrpc" | xargs gem uninstall --all --force'
@@ -57,10 +60,8 @@ alias gem_remove_all='gem list | grep -E -v "default:|test-unit|power_assert|rak
 alias tmux="TERM=screen-256color-bce tmux"
 alias ack="rg"   # rg is faster and better
 alias ag="rg"    # rg is faster and better
-alias dendron="code $HOME/Dendron"
-gnup() {
-  gnuplot -p -e "set terminal dumb size $(tput cols), $(tput lines); unset xtics; set autoscale; plot '-'"
-}
+alias dockercd="cd ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux"
+# MP4Box $(find . -name recent-front\* -type f ! -size 0 | awk '{ print "-cat " $1}') ~/Desktop/cam.mp4
 ruboblame() {
   rubocop --format clang | grep -v '^\s' | grep -v '^$' | grep -v "files inspected" | awk -F: '{ cmd = "git blame --porcelain -L "$2","$2 " " $1 " 2>/dev/null | grep \"^author \" | cut -c8-"; cmd | getline blame; print blame ": " $1 " Line:" $2 " " $5 " " $6; close(cmd) }'
 }
@@ -74,16 +75,38 @@ scp() {
 }
 
 #-------------------------------------------
-# Tracks yadm status (dotfiles)
+# EC2
 #-------------------------------------------
-yadm_status() {
-  if [ -n "$(yadm status --porcelain)" ]; then
-    #echo "${fg[red]}(yadm)${reset_color} "
-    echo "(yadm) "
-  else
-    echo ""
-  fi
-}
+export EC2_HOME=~/.ec2
+export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem 2>/dev/null`
+export EC2_CERT=`ls $EC2_HOME/cert-*.pem 2>/dev/null`
+
+#-------------------------------------------
+# Prompt
+#-------------------------------------------
+# configure_prompt()
+# {
+#   autoload -U colors && colors
+#   function echo_blank() {
+#       echo
+#   }
+#   precmd_functions+=echo_blank
+#
+#   animate_if_error()
+#   {
+#     if [[ $? -ne 0 ]]; then
+#       PROMPT=""
+#       STATUS_COLOR="%F{red}"
+#     else
+#       PROMPT=""
+#       STATUS_COLOR="%F{green}"
+#     fi
+#     PROMPT="${PROMPT}%F${STATUS_COLOR}%~%F{white}
+# $ "
+#   }
+#
+#   precmd_functions+=animate_if_error
+# }
 
 #-------------------------------------------
 # Define the shell prompt
@@ -95,7 +118,12 @@ export GIT_PS1_SHOWUNTRACKEDFILES="true"
 # see the difference between HEAD and its upstream
 export GIT_PS1_SHOWUPSTREAM="true"
 export PROMPT="%~ \$(vcs_status)»%b "
-export RPROMPT="$RPROMPT \$(yadm_status)"
+
+#-------------------------------------------
+# Compiler Settings
+#-------------------------------------------
+# Tell any compiler we want only the 64-bit x86 binaries
+#export ARCHFLAGS="-arch x86_64"
 
 #-------------------------------------------
 # Disable brew auto update
@@ -103,6 +131,7 @@ export RPROMPT="$RPROMPT \$(yadm_status)"
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export HOMEBREW_AUTO_UPDATE_SECS=90000000
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 #-------------------------------------------
 # Key bindings
@@ -116,9 +145,36 @@ bindkey '^f' forward-word
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 #-------------------------------------------
+# Disable rails' spring command
+#-------------------------------------------
+DISABLE_SPRING=true
+
+#-------------------------------------------
+# chruby
+#-------------------------------------------
+if [ -f  /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+fi
+if [ -f  /usr/local/opt/chruby/share/chruby/auto.sh ]; then
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+fi
+
+#-------------------------------------------
+# nodenv
+#-------------------------------------------
+eval "$(nodenv init -)"
+
+#-------------------------------------------
 # FZF
 #-------------------------------------------
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+
+#-------------------------------------------
+# OAUTH keys
+#-------------------------------------------
+if [ -f ~/.oauth_keys ]; then
+  . ~/.oauth_keys
+fi
 
 #-------------------------------------------
 # ripgrep
@@ -126,31 +182,85 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 #-------------------------------------------
+# PATH configuration
+#-------------------------------------------
+export PATH="/usr/local/bin:$HOME/bin:/usr/local/sbin:${PATH}"
+#
+#-------------------------------------------
+# Put the local `bin` path before the global path
+#-------------------------------------------
+export PATH="./bin:${PATH}"
+
+#-------------------------------------------
+# YARN
+#-------------------------------------------
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+#-------------------------------------------
+# Add path for 'go'
+#-------------------------------------------
+export PATH="$HOME/go/bin:$PATH"
+
+#-------------------------------------------
+# Add path for homebrew's version of curl
+#-------------------------------------------
+export PATH="/usr/local/opt/curl/bin:$PATH"
+
+#-------------------------------------------
 # Fix slow pasting into zsh when syntax highligting is on
 #-------------------------------------------
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
+#
+# Onivim
+#
+alias oni2='/Applications/Onivim2.app/Contents/MacOS/Oni2'
+
+#
+# dotnet
+#
+export ASPNETCORE_ENVIRONMENT=Development
+
+#
+# Lecture helper
+#
+lecture() {
+  if [ -f ~/dev/sdg/handbook/lessons/${1}/lecture/presentation/index.md ]; then
+    open -a Deckset ~/dev/sdg/handbook/lessons/${1}/lecture/presentation/index.md
+  fi
+  if [ -f ~/dev/sdg/handbook/lessons/${1}/lecture.md ]; then
+    open -a Deckset ~/dev/sdg/handbook/lessons/${1}/lecture.md
+  fi
+}
+
+lecture-to-pdf() {
+  if [ -f ~/dev/sdg/handbook/lessons/${1}/lecture/presentation/index.md ]; then
+    deckset-to-pdf ~/dev/sdg/handbook/lessons/${1}/lecture/presentation/index.md
+  fi
+  if [ -f ~/dev/sdg/handbook/lessons/${1}/lecture.md ]; then
+    deckset-to-pdf ~/dev/sdg/handbook/lessons/${1}/lecture.md
+  fi
+}
+
+#
 # Remove options from less
 #
 unset LESS
 
+#
+# Set Firefox Developer Edition as my dev browser of choice
+#
+#export BROWSER="/usr/local/bin/firefox-dev.js"
+
+
 # Disable control-D (EOF) from existing the shell
 setopt ignore_eof
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+if [ -f '/Users/gstark/.netlify/helper/path.zsh.inc' ]; then source '/Users/gstark/.netlify/helper/path.zsh.inc'; fi
 
 # Configures the ZSH command timing to exclude certain commands
 ZSH_COMMAND_TIME_EXCLUDE=(vim irb)
 
-#-------------------------------------------
-# Disable all history duplication
-#-------------------------------------------
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-
-#-------------------------------------------
-# Kin
-#-------------------------------------------
-. "${HOME}/.zshrc-kin"
+# thefuck
+eval $(thefuck --alias)
