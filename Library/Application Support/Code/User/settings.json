@@ -1,7 +1,9 @@
 {
   "editor.insertSpaces": true,
   "[ruby]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -18,11 +20,11 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // "[csharp]": {
-  //   "editor.insertSpaces": true,
-  //   "editor.tabSize": 4,
-  //   "editor.defaultFormatter": "ms-dotnettools.csharp"
-  // },
+  "[csharp]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
   "omnisharp.useEditorFormattingSettings": true,
   "csharp.referencesCodeLens.enabled": false,
   // "[shellscript]": {
@@ -125,6 +127,8 @@
   "liveshare.joinDebugSessionOption": "Prompt",
   "liveshare.showVerboseNotifications": false,
   "omnisharp.enableEditorConfigSupport": true,
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
   "scm.diffDecorations": "overview",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.disableExtension": false,
@@ -164,8 +168,15 @@
   "autoimport.showNotifications": true,
   "[markdown]": {
     "breadcrumbs.showFunctions": true,
-    "editor.quickSuggestions": true,
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    },
     "editor.tabSize": 2
+  },
+  "editor.tokenColorCustomizations": {
+    "comments": "#8fb0e5af"
   },
   "workbench.colorCustomizations": {
     "editorLineNumber.foreground": "#8991A2",
@@ -174,7 +185,7 @@
   },
   "omnisharp.useGlobalMono": "never",
   "git.inputValidationSubjectLength": 70,
-  "vim.neovimPath": "/opt/homebrew/bin/nvim",
+  "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.enableNeovim": true,
   "editor.cursorBlinking": "solid",
   "highlightLine.borderWidth": "1px",
@@ -230,6 +241,7 @@
   "editor.tabSize": 2,
   "editor.accessibilitySupport": "off",
   "workbench.panel.defaultLocation": "right",
+  "workbench.colorTheme": "One Monokai",
   "editor.fontLigatures": false,
   "github.copilot.autocomplete.enable": true,
   "javascript.inlayHints.enumMemberValues.enabled": true,
@@ -252,34 +264,12 @@
   "git.path": "/usr/local/bin/git",
   "editor.guides.indentation": false,
   "editor.guides.bracketPairs": false,
-  "editor.tokenColorCustomizations": {
-    "comments": "#8fb0e5aa"
-  },
-  "workbench.colorTheme": "GitHub Dark Default",
-  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "blockman.n01LineHeight": 0,
-  "svg.preview.mode": "svg",
-  "gitlens.codeLens.recentChange.enabled": false,
-  "gitlens.codeLens.authors.enabled": false,
-  "solargraph.useBundler": true,
-  "solargraph.bundlerPath": "/Users/gavin/.rbenv/shims/bundler",
-  "ruby.lint": {
-    "standard": {
-      "useBundler": true
-    }
-  },
-  "ruby.useLanguageServer": true,
-  "ruby.intellisense": "rubyLocate",
   "emmet.includeLanguages": {
     "erb": "html"
   },
-  "window.zoomLevel": 3
-  // "emeraldwalk.runonsave": {
-  //   "commands": [
-  //       {
-  //           "match": "\\.rb$",
-  //           "cmd": "standardrb --fix ${file}"
-  //       }
-  //   ]
-  // }
+  "git.mergeEditor": false,
+  "files.associations": {
+    "*.star": "python"
+  },
+  "window.zoomLevel": 2
 }
