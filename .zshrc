@@ -236,3 +236,20 @@ ZSH_COMMAND_TIME_EXCLUDE=(vim irb)
 #-------------------------------------------
 eval $(thefuck --alias)
 
+#-------------------------------------------
+# Ignore history duplicates
+#-------------------------------------------
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
+#-------------------------------------------
+# asdf
+#-------------------------------------------
+if [ -f /usr/local/opt/asdf/libexec/asdf.sh ]; then
+  . /usr/local/opt/asdf/libexec/asdf.sh
+fi
+
