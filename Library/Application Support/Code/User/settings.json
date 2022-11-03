@@ -2,7 +2,7 @@
   "editor.insertSpaces": true,
   "[ruby]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "rebornix.ruby",
     "editor.formatOnSave": true
   },
   "[typescript]": {
@@ -93,6 +93,7 @@
     "munin",
     "neocast",
     "object",
+    "offwhite",
     "orms",
     "pedac",
     "Postgres",
@@ -110,9 +111,8 @@
     "wireframes"
   ],
   "editor.formatOnSave": true,
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "Monolisa",
   "editor.hover.enabled": true,
-  "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestionsDelay": 500,
   "editor.renderWhitespace": "trailing",
@@ -222,7 +222,7 @@
   "github.copilot.enable": {
     "*": true,
     "yaml": true,
-    "plaintext": false,
+    "plaintext": true,
     "markdown": true
   },
   "diffEditor.wordWrap": "off",
@@ -271,5 +271,11 @@
   "files.associations": {
     "*.star": "python"
   },
+  "ruby.lint": {
+    "standard": true
+  },
+  "ruby.format": "standard",
+  "solargraph.useBundler": true,
+  "editor.minimap.enabled": false,
   "window.zoomLevel": 2
 }

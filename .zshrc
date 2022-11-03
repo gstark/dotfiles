@@ -167,7 +167,7 @@ fi
 #-------------------------------------------
 # nodenv
 #-------------------------------------------
-eval "$(nodenv init -)"
+# eval "$(nodenv init -)"
 
 #-------------------------------------------
 # FZF
@@ -252,4 +252,3 @@ setopt HIST_SAVE_NO_DUPS
 if [ -f /usr/local/opt/asdf/libexec/asdf.sh ]; then
   . /usr/local/opt/asdf/libexec/asdf.sh
 fi
-
