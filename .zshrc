@@ -136,7 +136,7 @@ export PROMPT="%~ \$(vcs_status)»%b "
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export HOMEBREW_AUTO_UPDATE_SECS=90000000
-export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+# export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 #-------------------------------------------
 # Key bindings
@@ -252,3 +252,9 @@ setopt HIST_SAVE_NO_DUPS
 if [ -f /usr/local/opt/asdf/libexec/asdf.sh ]; then
   . /usr/local/opt/asdf/libexec/asdf.sh
 fi
+
+
+#-------------------------------------------
+# hivemind: https://github.com/DarthSim/hivemind
+#-------------------------------------------
+export HIVEMIND_PORT=3000

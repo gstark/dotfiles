@@ -43,3 +43,8 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Disable photoanalysis
+launchctl disable gui/$UID/com.apple.photoanalysisd && launchctl kill -TERM gui/$UID/com.apple.photoanalysisd
+launchctl disable user/$UID/com.apple.photoanalysisd && launchctl kill -TERM user/$UID/com.apple.photoanalysisd
+
