@@ -1,7 +1,7 @@
 cd ~
 
 # Install all my brew dependencies
-brew bundle
+brew bundle --no-upgrade
 
 # Install all my vim plugins (sssshhhh, quiet)
 vim +PlugInstall +qall &>/dev/null

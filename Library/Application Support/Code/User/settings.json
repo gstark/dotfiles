@@ -14,6 +14,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[c]": {
+    "editor.formatOnSave": false
+  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -276,7 +279,7 @@
   },
   "ruby.format": "standard",
   "editor.minimap.enabled": false,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 5,
   "files.autoSave": "afterDelay",
   "gitlens.codeLens.recentChange.enabled": false,
   "gitlens.showWelcomeOnInstall": false,
@@ -286,5 +289,8 @@
   "gitlens.currentLine.pullRequests.enabled": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.views.commits.files.compact": false,
-  "gitlens.views.commitDetails.avatars": false
+  "gitlens.views.commitDetails.avatars": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "gitlens.codeLens.authors.enabled": false,
+  "sorbet.enabled": true
 }

@@ -33,6 +33,7 @@ brew "remotemobprogramming/brew/mob"
 brew "libgd"
 brew "libpng"
 brew "netpbm"
+brew "yadm"
 
 cask "chromedriver"
 cask "devdocs"
@@ -46,3 +47,51 @@ cask "rectangle"
 cask "tuple"
 
 mas "Next Meeting", id: 1017470484
+
+
+cask "google-drive"
+cask "grammarly-desktop"
+cask "arq"
+cask "audacity"
+# backdrop
+cask "beamer"
+cask "beekeeper-studio"
+cask "beyond-compare"
+# blinky
+cask "carbon-copy-cloner"
+cask "charles"
+cask "cyberduck"
+# DaVinci Resolve
+cask "deckset"
+cask "devdocs"
+cask "discord"
+cask "expressvpn"
+cask "firefox"
+# folx
+cask "github"
+cask "google-chrome"
+cask "google-drive"
+# Harmony Desktop
+# harvest
+cask "httpie"
+cask "insomnia"
+cask "intellij-idea-ce"
+cask "iterm2"
+cask "itsycal"
+cask "menumeters"
+cask "microsoft-excel"
+cask "microsoft-word"
+cask "microsoft-auto-update"
+# monosnap
+cask "raycast"
+cask "runjs"
+cask "slack"
+# old turbotax
+cask "visual-studio-code"
+cask "vlc"
+cask "wifi-explorer"
+cask "wireshark"
+cask "zoom"
+
+
+
