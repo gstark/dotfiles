@@ -15,6 +15,7 @@ source $ZSH/oh-my-zsh.sh
 #-------------------------------------------
 # Homebrew environment
 #-------------------------------------------
+eval "$(/opt/homebrew/bin/brew shellenv)"
 BREW_PREFIX=$(brew --prefix)
 
 #-------------------------------------------
@@ -53,8 +54,8 @@ export VISUAL='vim'
 # Some useful aliases
 #-------------------------------------------
 alias vi=vim
-alias git=hub
 alias issues="gh issue list -a gstark --web"
+alias github="gh repo view --web"
 alias rm="if [ -x $BREW_PREFIX/bin/figlet ]; then figlet -f banner3 'use trash'; else; echo 'use trash'; fi #"
 alias kspring='ps auxww | grep "[s]pring" | awk "{print \$2}" | xargs kill -9'
 alias flushdns="dscacheutil -flushcache"
@@ -234,7 +235,7 @@ ZSH_COMMAND_TIME_EXCLUDE=(vim irb)
 #-------------------------------------------
 # the fuck
 #-------------------------------------------
-eval $(thefuck --alias)
+eval $(thefuck --alias 2>/dev/null)
 
 #-------------------------------------------
 # Ignore history duplicates
@@ -258,3 +259,41 @@ fi
 # hivemind: https://github.com/DarthSim/hivemind
 #-------------------------------------------
 export HIVEMIND_PORT=3000
+
+# Where is diff being aliased to `diff --color`
+unalias diff
+
+#-------------------------------------------
+# node@16
+#-------------------------------------------
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/node@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/node@16/include"
+
+#-------------------------------------------
+# node@18
+#-------------------------------------------
+# export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/node@18/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/node@18/include"
+
+
+#-------------------------------------------
+# Exclude production commands from hsitory
+#-------------------------------------------
+function zshaddhistory() {
+  emulate -L zsh
+  if [[ $1 != *"-production-"* ]] ; then
+    print -sr -- "${1%%$'\n'}"
+    fc -p
+  else
+    return 1
+  fi
+}
+
+# bun completions
+[ -s "/Users/gstark/.bun/_bun" ] && source "/Users/gstark/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
